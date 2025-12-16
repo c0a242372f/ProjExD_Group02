@@ -3,7 +3,6 @@ import random
 import sys
 import os
 
-pygame.mixer.init()
 os.chdir(os.path.dirname(os.path.abspath(__file__)))
 # --- 1. 設定とクラス定義 ---
 
@@ -12,7 +11,11 @@ WHITE = (255, 255, 255)
 BLACK = (0, 0, 0)
 RED   = (255, 100, 100)
 
+pygame.mixer.init()
 snd = pygame.mixer.Sound("./ccs.wav")
+pygame.mixer.music.load("./future.mp3")
+pygame.mixer.music.play(-1)
+
 
 class Unit:
     def __init__(self, name, hp, attack, defense):
