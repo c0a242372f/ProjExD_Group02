@@ -1,13 +1,18 @@
 import pygame
 import random
 import sys
+import os
 
+pygame.mixer.init()
+os.chdir(os.path.dirname(os.path.abspath(__file__)))
 # --- 1. 設定とクラス定義 ---
 
 # 色の定義
 WHITE = (255, 255, 255)
 BLACK = (0, 0, 0)
 RED   = (255, 100, 100)
+
+snd = pygame.mixer.Sound("./ccs.wav")
 
 class Unit:
     def __init__(self, name, hp, attack, defense):
@@ -38,6 +43,8 @@ class Unit:
         if target.hp < 0:
             target.hp = 0
 
+        # 攻撃音を再生
+        snd.play()
         # ログ用のメッセージを作成して返す
         return f"{self.name}の攻撃！ {target.name}に {damage} のダメージ！"
 
